@@ -1,7 +1,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib tagdir="/WEB-INF/tags/import" prefix="import"%>
 <%@ taglib tagdir="/WEB-INF/tags/ui" prefix="ui"%>
-<%@ taglib tagdir="/WEB-INF/tags/forms" prefix="forms"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +32,7 @@
 								<div class="row">
 									<div class="col">
 										<!-- REGISTRATION FORM -->
-										<form action='<spring:url value="/create-account"></spring:url>'>
+										<form action='<spring:url value="/CreateAccount"></spring:url>' method="POST">
 										<h3 class="m-3">Create Account</h3>
 											<!-- USERNAME -->
 											<div class="input-group mb-3">
@@ -77,14 +76,14 @@
 											<hr>
 											<p>Already have an account?</p>
 											<div class="form-group">
-												<a href='<spring:url value="/"></spring:url>' class="btn btn-primary">Login</a>
+												<a href='<spring:url value="/login"></spring:url>' class="btn btn-primary">Login</a>
 											</div>
 										</form>
 									</div>
 								</div>
 								<div class="row my-3">
 									<div class="col">
-										<a href="#" class="btn btn-dark btn-block">Visit Book
+										<a href='<spring:url value="/home"></spring:url>' class="btn btn-danger btn-block">Visit Book
 											Store</a>
 									</div>
 								</div>

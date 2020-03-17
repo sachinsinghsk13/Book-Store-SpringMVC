@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQuery;
+
 @Entity
 @Table(name = "categories")
+@NamedQuery(query = "FROM Category ORDER BY title", name = "all_categories")
 public class Category {
 	
 	@Id

@@ -1,6 +1,11 @@
+body {
+	min-height: 100vh;
+}
+
 #main {
-	/* background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);*/
-	background: linear-gradient(to right, #d66d75, #e29587);
+	background: #232526;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #card-section {

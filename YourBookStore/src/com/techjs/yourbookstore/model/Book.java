@@ -16,9 +16,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQuery;
+
 
 @Entity
 @Table(name = "books")
+@NamedQuery(name = "all_books", query = "FROM Book")
 public class Book {
 	
 	@Id
@@ -26,14 +29,17 @@ public class Book {
 	@Column(name = "ID", nullable = false, unique = true)
 	private Long id;
 	
-	@Column(name = "TITLE", nullable = false, length = 20)
+	@Column(name = "TITLE", nullable = false, length = 50)
 	private String title;
 	
-	@Column(name = "DESCRIPTION", nullable = false, length = 512)
+	@Column(name = "DESCRIPTION", nullable = false, length = 4096)
 	private String description;
 	
-	@Column(name = "AUTHOR", nullable = false, length = 25)
+	@Column(name = "AUTHOR", nullable = false, length = 50)
 	private String author;
+	
+	@Column(name = "YEAR", nullable = true)
+	private Integer year;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "LANGUAGE",nullable = true)
@@ -45,11 +51,11 @@ public class Book {
 	@Column(name = "ISBN", nullable = true, unique = true, length = 20)
 	private String isbn;
 	
-	@Column(name = "FILE_SIZE")
-	private Float fileSize;
+	@Column(name = "PDF_FILE_SIZE")
+	private Long pdfFileSize;
 	
-	@Column(name = "FILE_NAME", unique = true, nullable = false)
-	private String fileName;
+	@Column(name = "PDF_FILE_NAME", unique = true, nullable = false)
+	private String pdfFileName;
 	
 	@Column(name = "THUMB_FILE_NAME", unique = true, nullable = true)
 	private String thumbFileName;
@@ -119,23 +125,37 @@ public class Book {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
-	public Float getFileSize() {
-		return fileSize;
+	
+	
+	public Long getPdfFileSize() {
+		return pdfFileSize;
 	}
-	public void setFileSize(Float fileSize) {
-		this.fileSize = fileSize;
+	public void setPdfFileSize(Long pdfFileSize) {
+		this.pdfFileSize = pdfFileSize;
 	}
-	public String getFileName() {
-		return fileName;
+	public String getPdfFileName() {
+		return pdfFileName;
 	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setPdfFileName(String pdfFileName) {
+		this.pdfFileName = pdfFileName;
 	}
 	public String getThumbFileName() {
 		return thumbFileName;
 	}
 	public void setThumbFileName(String thumbFileName) {
 		this.thumbFileName = thumbFileName;
+	}
+	public Integer getYear() {
+		return year;
+	}
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", description=" + description + ", author=" + author + ", year="
+				+ year + ", language=" + language + ", pages=" + pages + ", isbn=" + isbn + ", pdfFileSize="
+				+ pdfFileSize + ", pdfFileName=" + pdfFileName + ", thumbFileName=" + thumbFileName + "]";
 	}
 	
 }

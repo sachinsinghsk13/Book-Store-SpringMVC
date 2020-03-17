@@ -1,5 +1,8 @@
 package com.techjs.yourbookstore.config;
 
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration.Dynamic;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -18,5 +21,11 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 	protected String[] getServletMappings() {
 		return new String[] {"/"};
 	}
-
+	
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		MultipartConfigElement element = new MultipartConfigElement("/home/sachinsingh/temp/",5242880,10485760, 0);
+		registration.setMultipartConfig(element);
+	}
+	
 }

@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import({DaoConfig.class, ServiceConfig.class})
+@Import({DaoConfig.class, ServiceConfig.class, SecurityConfig.class})
 public class AppConfig {
 	
 }

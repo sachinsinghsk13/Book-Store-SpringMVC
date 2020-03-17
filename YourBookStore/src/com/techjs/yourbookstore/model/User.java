@@ -9,9 +9,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQuery;
+
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
+@NamedQuery(query = "FROM User WHERE email = :mail AND password = :pass", name = "authenticate_user")
 public class User {
 	
 	@Id
