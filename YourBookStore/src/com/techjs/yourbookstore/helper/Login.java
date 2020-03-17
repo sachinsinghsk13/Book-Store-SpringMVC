@@ -1,4 +1,4 @@
-package com.techjs.yourbookstrore.helper;
+package com.techjs.yourbookstore.helper;
 
 public class Login {
 	private String email;

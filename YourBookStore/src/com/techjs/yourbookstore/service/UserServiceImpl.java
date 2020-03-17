@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.techjs.yourbookstore.dao.UserDao;
+import com.techjs.yourbookstore.helper.Login;
 import com.techjs.yourbookstore.model.Admin;
 import com.techjs.yourbookstore.model.User;
-import com.techjs.yourbookstrore.helper.Login;
 
 @Service
 public class UserServiceImpl implements UserService {

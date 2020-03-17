@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.techjs.yourbookstore.helper.Login;
+import com.techjs.yourbookstore.helper.NewMemberParticipant;
 import com.techjs.yourbookstore.model.Admin;
 import com.techjs.yourbookstore.model.User;
 import com.techjs.yourbookstore.security.SessionUserAuthentication;
@@ -21,8 +23,6 @@ import com.techjs.yourbookstore.service.EmailService;
 import com.techjs.yourbookstore.service.UserService;
 import com.techjs.yourbookstore.util.AppConstants;
 import com.techjs.yourbookstore.util.OTPGenerator;
-import com.techjs.yourbookstrore.helper.Login;
-import com.techjs.yourbookstrore.helper.NewMemberParticipant;
 
 @Controller
 public class AccountsController {
