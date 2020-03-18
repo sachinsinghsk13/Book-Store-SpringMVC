@@ -28,4 +28,11 @@ public class BookService {
 	public List<Book> allBooks() {
 		return bookDao.getBooks();
 	}
+	
+	public Long getBookCount() {
+		return bookDao.getBookCount();
+	}
+	public List<Book> allBooks(Integer max, Integer offset) {
+		return bookDao.getBooks(max, offset);
+	}
 }

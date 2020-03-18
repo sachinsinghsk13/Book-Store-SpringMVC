@@ -28,7 +28,9 @@
 				<ul class="list-group">
 					<li class="list-group-item text-center">Books Categories</li>
 					<c:forEach var="cat" items="${categories}">
-						<li class="list-group-item"><a href='<spring:url value="/category/${cat.title}"></spring:url>' class="text-info">${cat.title}</a></li>
+						<li class="list-group-item"><a
+							href='<spring:url value="/category/${cat.title}"></spring:url>'
+							class="text-info">${cat.title}</a></li>
 
 					</c:forEach>
 
@@ -42,9 +44,14 @@
 							thumb="${book.thumbFileName}" title="${book.title}"
 							author="${book.author}"></ui:book>
 					</c:forEach>
+					<div class="row p-2">
+						<div class="col">
+							<ui:pagination currentPage="${pagination.current }"
+								totalPages="${pagination.totolPages}" baseurl="/home" />
+						</div>
+					</div>
 
 				</div>
-
 			</div>
 		</div>
 	</div>

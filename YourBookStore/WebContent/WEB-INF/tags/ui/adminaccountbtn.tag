@@ -7,7 +7,7 @@
 		<i class="fas fa-user-cog"></i> ${username}
 	</button>
 	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-		<a class="dropdown-item" href='<spring:url value="/login"></spring:url>'> <i class="fas fa-plus-circle"></i>
+		<a class="dropdown-item" href='<spring:url value="/admin/add-book"></spring:url>'> <i class="fas fa-plus-circle"></i>
 			Add Book
 		</a>
 		<div class="dropdown-divider"></div>

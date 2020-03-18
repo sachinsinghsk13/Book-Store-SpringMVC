@@ -24,6 +24,7 @@ import com.techjs.yourbookstore.model.Category;
 import com.techjs.yourbookstore.model.Language;
 import com.techjs.yourbookstore.service.BookService;
 import com.techjs.yourbookstore.util.AppConstants;
+import com.techjs.yourbookstrore.ui.Pagination;
 
 @Controller
 public class BookController {
@@ -76,9 +77,24 @@ public class BookController {
 	}
 	
 	@GetMapping("/home")
-	public ModelAndView home() {
+	public ModelAndView home(@RequestParam(value = "page", required = false) Integer page) {
 		ModelAndView mv = new ModelAndView();
-		List<Book> books = bookService.allBooks();
+		Pagination pagination = new Pagination();
+		Long totalBooks = bookService.getBookCount();
+		
+		Integer totalPages = (int) Math.ceil((double) totalBooks/pagination.getItemPerPage());
+		if (page == null) {
+			page = 1;
+		}
+		pagination.setTotal(totalBooks);
+		pagination.setTotolPages(totalPages);
+		pagination.setCurrent(page);
+		
+		mv.addObject("pagination", pagination);
+		
+		Integer offset = ((page - 1) * pagination.getItemPerPage());	
+		
+		List<Book> books = bookService.allBooks(pagination.getItemPerPage(), offset);
 		List<Category> categories = bookService.allCategories();
 		categories.sort((a, b) -> a.getTitle().compareTo(b.getTitle()));
 		mv.addObject("books", books);

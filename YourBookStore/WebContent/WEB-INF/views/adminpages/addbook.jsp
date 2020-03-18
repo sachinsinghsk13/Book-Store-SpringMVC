@@ -120,7 +120,7 @@
 						<div class="col">
 							<div class="form-group">
 								<input type="submit" class="btn btn-primary mx-2"
-									value="Add Book"> <a href="" class="btn btn-secondary">Cancel</a>
+									value="Add Book"> <a href='<spring:url value="/home"></spring:url>' class="btn btn-secondary">Cancel</a>
 							</div>
 						</div>
 					</div>

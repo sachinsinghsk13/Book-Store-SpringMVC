@@ -10,4 +10,7 @@ public interface BookDao {
 	Category getCategoryById(Integer id);
 	List<Category> getCategories();
 	List<Book> getBooks();
+	Long getBookCount();
+	List<Book> getBooks(Integer max, Integer offset);
+
 }

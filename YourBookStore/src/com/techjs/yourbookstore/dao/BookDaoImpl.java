@@ -48,4 +48,19 @@ public class BookDaoImpl implements BookDao {
 		Session session = sessionFactory.getCurrentSession();
 		return session.createNamedQuery("all_books").list();
 	}
+
+
+	@Override
+	public Long getBookCount() {
+		return (Long) sessionFactory.getCurrentSession().createQuery("SELECT COUNT(*) FROM Book").getSingleResult();
+	}
+
+
+	@Override
+	public List<Book> getBooks(Integer max, Integer offset) {
+		return sessionFactory.getCurrentSession().createQuery("FROM Book")
+				.setFirstResult(offset)
+				.setMaxResults(max)
+				.getResultList();
+	}
 }
