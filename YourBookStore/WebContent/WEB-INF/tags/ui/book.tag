@@ -8,12 +8,14 @@
 <%@ attribute name="author" rtexprvalue="true" required="true"%>
 <div class="row border-bottom p-2">
 	<div class="col-2">
+		<a href='<spring:url value="/book/${id}"></spring:url>'>
 		<img
 			src='<spring:url value="/thumbs?id=${thumb}"></spring:url>'
-			class="img-fluid min-vh-25">
+			class="img-fluid min-vh-25 thumb-img">
+		</a>
 	</div>
 	<div class="col-9">
-		<a href="#" class="lead text-dark text-decoration-none">${title}</a>
+		<a href='<spring:url value="/book/${id}"></spring:url>' class="lead text-dark text-decoration-none">${title}</a>
 		<p class="text-muted">By: ${author}</p>
 		<p class="text-dark d-none d-lg-block">
 			<c:choose>

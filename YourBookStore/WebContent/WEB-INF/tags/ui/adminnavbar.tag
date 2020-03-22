@@ -38,7 +38,7 @@
 				<input class="form-control-sm mr-sm-2 rounded-pill border-0 p-2"
 					type="search" placeholder="Book Title, Author.."
 					aria-label="Search">
-				<button class="btn btn-light my-2 btn-sm my-sm-0" type="submit"><i class="fas fa-search"></i> Search</button>
+			<!-- 	<button class="btn btn-light my-2 btn-sm my-sm-0" type="submit"><i class="fas fa-search"></i> Search</button> -->
 
 			</form>
 

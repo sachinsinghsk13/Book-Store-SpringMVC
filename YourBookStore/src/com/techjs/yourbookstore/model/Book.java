@@ -22,6 +22,7 @@ import org.hibernate.annotations.NamedQuery;
 @Entity
 @Table(name = "books")
 @NamedQuery(name = "all_books", query = "FROM Book")
+@NamedQuery(name = "get_book_by_name", query = "FROM Book WHERE id = :id")
 public class Book {
 	
 	@Id
@@ -68,7 +69,7 @@ public class Book {
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private Category category;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Comment> comments;
 	
 	public List<Comment> getComments() {

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.techjs.yourbookstore.dao.BookDao;
 import com.techjs.yourbookstore.model.Book;
 import com.techjs.yourbookstore.model.Category;
+import com.techjs.yourbookstore.model.Comment;
 
 @Service
 public class BookService {
@@ -34,5 +35,18 @@ public class BookService {
 	}
 	public List<Book> allBooks(Integer max, Integer offset) {
 		return bookDao.getBooks(max, offset);
+	}
+	
+	public Book getBookById(Long id) {
+		try {
+			return bookDao.getBookById(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public void insertComment(Long id, Comment comment) {
+		bookDao.addComment(id, comment);
 	}
 }

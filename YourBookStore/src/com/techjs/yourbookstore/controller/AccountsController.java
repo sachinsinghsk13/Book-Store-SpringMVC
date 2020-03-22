@@ -59,7 +59,7 @@ public class AccountsController {
 		ModelAndView mv = new ModelAndView();
 
 		if (participant == null) {
-			mv.setViewName("redirect:/CreateAccount");
+			mv.setViewName("redirect:/signup");
 		} else if (!otp.equalsIgnoreCase(participant.getOtp())) {
 			mv.addObject("invalidOtp", true);
 			mv.setViewName("otp-verification");
@@ -67,7 +67,7 @@ public class AccountsController {
 			User user = participant.getUser();
 			userService.addNewUser(user);
 			userAuthentication.login(user, UserRole.MEMBER);
-			mv.setViewName("/home");
+			mv.setViewName("/allbooks");
 		}
 		return mv;
 	}
@@ -77,7 +77,7 @@ public class AccountsController {
 			@SessionAttribute("participant") NewMemberParticipant participant) {
 		ModelAndView mv = new ModelAndView();
 		if (participant == null) {
-			mv.setViewName("redirect:/CreateAccount");
+			mv.setViewName("redirect:/signup");
 		} else {
 			participant.setOtp(OTPGenerator.generateOTP());
 			ApplicationContext context = (ApplicationContext) request
@@ -106,7 +106,7 @@ public class AccountsController {
 			mv.setViewName("admin-login-page");
 		} else {
 			userAuthentication.login(admin, UserRole.ADMIN);
-			mv.setViewName("redirect:/home");
+			mv.setViewName("redirect:/allbooks");
 		}
 		return mv;
 	}
@@ -128,7 +128,7 @@ public class AccountsController {
 			mv.setViewName("member-login-page");
 		} else {
 			userAuthentication.login(user, UserRole.MEMBER);
-			mv.setViewName("redirect:/home");
+			mv.setViewName("redirect:/allbooks");
 		}
 		return mv;
 	}
@@ -137,7 +137,7 @@ public class AccountsController {
 	public ModelAndView logout(@SessionAttribute(value = AppConstants.USER_ACCOUNT_ATTR) SessionUserAuthentication userAuthentication) {
 		ModelAndView mv = new ModelAndView();
 		userAuthentication.logout();
-		mv.setViewName("redirect:/home");
+		mv.setViewName("redirect:/allbooks");
 		return mv;
 	}
 }

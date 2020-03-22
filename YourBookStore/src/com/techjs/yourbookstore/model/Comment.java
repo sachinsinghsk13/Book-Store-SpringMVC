@@ -9,11 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "comments")
+
 public class Comment {
 	
 	@Id
@@ -54,6 +56,10 @@ public class Comment {
 	}
 	public void setPostedOn(Date postedOn) {
 		this.postedOn = postedOn;
+	}
+	@Override
+	public String toString() {
+		return "Comment [id=" + id + ", content=" + content + ", postedOn=" + postedOn + ", postedBy=" + postedBy + "]";
 	}
 	
 }

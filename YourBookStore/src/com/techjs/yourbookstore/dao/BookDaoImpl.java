@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.techjs.yourbookstore.model.Book;
 import com.techjs.yourbookstore.model.Category;
+import com.techjs.yourbookstore.model.Comment;
 
 @Repository
 @Transactional
@@ -62,5 +63,26 @@ public class BookDaoImpl implements BookDao {
 				.setFirstResult(offset)
 				.setMaxResults(max)
 				.getResultList();
+	}
+
+
+	@Override
+	public Book getBookById(Long id) {
+		return (Book) sessionFactory
+				.getCurrentSession()
+				.createNamedQuery("get_book_by_name")
+				.setParameter("id", id)
+				.getSingleResult();
+	}
+
+
+	@Override
+	public void addComment(Long id, Comment comment) {
+		Book book = (Book) sessionFactory
+				.getCurrentSession()
+				.createNamedQuery("get_book_by_name")
+				.setParameter("id", id)
+				.getSingleResult();
+		book.getComments().add(comment);
 	}
 }

@@ -2,6 +2,12 @@ body {
 	min-height: 100vh;
 }
 
+.thumb-img:hover {
+	translate: scale('1.01');
+}
+.thumb-img {
+	transition: all 1s;
+}
 #main {
 	background: #232526;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */

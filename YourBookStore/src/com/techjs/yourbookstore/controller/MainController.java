@@ -25,13 +25,8 @@ public class MainController {
 	@GetMapping("/")
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/home");
+		mv.setViewName("redirect:/allbooks");
 		return mv;
 	}
 	
-	@PostConstruct
-	public void init() {
-		List<Category> categories = bookDao.getCategories();
-		servletContext.setAttribute("categories",categories);
-	}
 }
