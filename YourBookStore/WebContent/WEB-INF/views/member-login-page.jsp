@@ -75,7 +75,7 @@
 								</div>
 								<div class="row my-3">
 									<div class="col">
-										<a href='<spring:url value="/home"></spring:url>' class="btn btn-danger btn-block">Visit Book
+										<a href='<spring:url value="/"></spring:url>' class="btn btn-danger btn-block">Visit Book
 											Store </a>
 									</div>
 								</div>

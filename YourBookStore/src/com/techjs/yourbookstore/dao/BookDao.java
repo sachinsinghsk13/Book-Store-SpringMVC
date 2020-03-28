@@ -12,7 +12,12 @@ public interface BookDao {
 	List<Category> getCategories();
 	List<Book> getBooks();
 	Long getBookCount();
+	Long getBookSearchCount(String query); 
 	List<Book> getBooks(Integer max, Integer offset);
+	List<Book> searchBook(String query);
+	List<Book> searchBook(Integer max, Integer offset, String query);
+	List<Book> getBooksByCategory(Integer max, Integer offset, String category);
+	List<Book> getBooksByCategory(String category);
 	Book getBookById(Long id);
 	void addComment(Long id, Comment comment);
 	

@@ -15,7 +15,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "comments")
-
 public class Comment {
 	
 	@Id

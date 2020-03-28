@@ -1,19 +1,26 @@
 package com.techjs.yourbookstrore.ui;
 
 public class AlertMessage {
-	private String message;
-	private AlertType alertType;
-	
-	public String getMessage() {
-		return message;
+	private String title;
+	private String description;
+	private String alertType;
+	public String getTitle() {
+		return title;
 	}
-	public void setMessage(String message) {
-		this.message = message;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public AlertType getAlertType() {
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getAlertType() {
 		return alertType;
 	}
-	public void setAlertType(AlertType alertType) {
+	public void setAlertType(String alertType) {
 		this.alertType = alertType;
 	}
+	
 }

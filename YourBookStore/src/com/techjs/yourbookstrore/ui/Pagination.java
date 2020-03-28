@@ -1,7 +1,7 @@
 package com.techjs.yourbookstrore.ui;
 
 public class Pagination {
-	private static final int defaultTtemPerPage = 15;
+	private static final int defaultTtemPerPage = 5;
 	private long total;
 	private int current;
 	private int itemPerPage = defaultTtemPerPage;

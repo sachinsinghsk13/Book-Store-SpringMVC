@@ -1,0 +1,22 @@
+<taglib xsi:schemaLocation="http://java.sun.com/xml/ns/javaee web-jsptaglibrary_2_1.xsd" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+
+	<tlib-version>2.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>simple</short-name>
+	<uri>mytags</uri>
+	<description>A simple tab library for the examples</description>
+
+	<tag>
+		<name>filesize</name>
+		<tag-class>com.techjs.yourbookstrore.ui.FileSizeTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>size</name>
+			<description>Size of the File</description>
+			<type>java.lang.Long</type>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+</taglib>

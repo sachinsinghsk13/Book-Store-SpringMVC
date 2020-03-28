@@ -85,4 +85,58 @@ public class BookDaoImpl implements BookDao {
 				.getSingleResult();
 		book.getComments().add(comment);
 	}
+
+
+	@Override
+	public List<Book> searchBook(String query) {
+		return this.sessionFactory
+				.getCurrentSession()
+				.getNamedQuery("search_book")
+				.setParameter("query", "%"+query+"%")
+				.list();
+	}
+
+
+	@Override
+	public List<Book> searchBook(Integer max, Integer offset, String query) {
+		return this.sessionFactory
+				.getCurrentSession()
+				.getNamedQuery("search_book")
+				.setParameter("query","%"+query+"%")
+				.setMaxResults(max)
+				.setFirstResult(offset)
+				.list();
+	}
+
+
+	@Override
+	public List<Book> getBooksByCategory(Integer max, Integer offset, String category) {
+		return this.sessionFactory
+				.getCurrentSession()
+				.getNamedQuery("book_by_category")
+				.setParameter("cat", category)
+				.setMaxResults(max)
+				.setFirstResult(offset)
+				.list();
+	}
+
+
+	@Override
+	public List<Book> getBooksByCategory(String category) {
+		return this.sessionFactory
+				.getCurrentSession()
+				.getNamedQuery("book_by_category")
+				.setParameter("cat", category)
+				.list();
+	}
+
+
+	@Override
+	public Long getBookSearchCount(String query) {
+		return (Long) this.sessionFactory
+				.getCurrentSession()
+				.getNamedQuery("book_search_count")
+				.setParameter("query","%"+query+"%" )
+				.getSingleResult();
+	}
 }

@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.techjs.yourbookstore.security.AdminAccountSecurityInterceptor;
 import com.techjs.yourbookstore.security.UserAccountInterceptor;
 
 @Configuration
@@ -28,6 +29,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new UserAccountInterceptor()).addPathPatterns("/**");
+		registry.addInterceptor(new AdminAccountSecurityInterceptor()).addPathPatterns("/admin/**");
 	}
 	
 	@Bean

@@ -1,6 +1,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="mytags" prefix="mtags"%>
 <%@ taglib tagdir="/WEB-INF/tags/import" prefix="import"%>
 <%@ taglib tagdir="/WEB-INF/tags/ui" prefix="ui"%>
 
@@ -77,7 +79,7 @@
 									</tr>
 									<tr>
 										<th scope="row">File Size:</th>
-										<td>${book.pdfFileSize}</td>
+										<td><mtags:filesize size="${book.pdfFileSize}" /></td>
 									</tr>
 									<tr>
 										<th scope="row">File Format:</th>
@@ -97,7 +99,8 @@
 					<div class="row">
 						<div class="offset-lg-1 col-lg-10">
 							<hr>
-							<c:if test="${sessionScope.SESSION_USER_ACCOUNT.authenticated and sessionScope.SESSION_USER_ACCOUNT.userRole eq 'ADMIN'}">
+							<c:if
+								test="${sessionScope.SESSION_USER_ACCOUNT.authenticated and sessionScope.SESSION_USER_ACCOUNT.userRole eq 'ADMIN'}">
 								<a
 									href='<spring:url value="/books/pdf?id=${book.pdfFileName}"></spring:url>'
 									class="btn btn-primary btn-sm"><i class="fas fa-edit"></i>
@@ -118,14 +121,24 @@
 						<div class="offset-lg-1 col-lg-10">
 							<hr>
 							<h5>Comments:</h5>
-							<c:forEach var="comment" items="${book.comments}">
-								<div class="border-bottom p-3">
-									<strong>${comment.postedBy.name}</strong> <span
-										class="text-muted text-indent"><fmt:formatDate
-											value="${comment.postedOn}" pattern="MMM dd, yyyy hh:mm a" /></span>
-									<p class="text-dark">${comment.content}</p>
-								</div>
-							</c:forEach>
+							<c:choose>
+								<c:when test="${fn:length(book.comments) gt 0 }">
+									<c:forEach var="comment" items="${book.comments}">
+										<div class="border-bottom p-3">
+											<strong>${comment.postedBy.name}</strong> <span
+												class="text-muted text-indent"><fmt:formatDate
+													value="${comment.postedOn}" pattern="MMM dd, yyyy hh:mm a" /></span>
+											<p class="text-dark">${comment.content}</p>
+										</div>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<div class="p-3">
+										<h6>There Is No Comments..</h6>
+									</div>
+
+								</c:otherwise>
+							</c:choose>
 							<c:if test="${sessionScope.SESSION_USER_ACCOUNT.authenticated}">
 								<div class="border-bottom p-3">
 									<strong class="m-2">Add a comment</strong>
@@ -157,6 +170,7 @@
 		</div>
 
 	</div>
+	<ui:footer />
 </body>
 
 </html>

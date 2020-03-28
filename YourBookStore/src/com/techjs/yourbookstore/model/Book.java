@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NamedQuery;
@@ -23,6 +24,9 @@ import org.hibernate.annotations.NamedQuery;
 @Table(name = "books")
 @NamedQuery(name = "all_books", query = "FROM Book")
 @NamedQuery(name = "get_book_by_name", query = "FROM Book WHERE id = :id")
+@NamedQuery(name = "search_book", query = "FROM Book WHERE title LIKE :query OR author LIKE :query")
+@NamedQuery(name = "book_by_category", query = "FROM Book WHERE category = :cat")
+@NamedQuery(name = "book_search_count", query = "SELECT COUNT(*) FROM Book WHERE title LIKE :query OR author LIKE :query")
 public class Book {
 	
 	@Id
@@ -70,6 +74,7 @@ public class Book {
 	private Category category;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@OrderBy("postedOn")
 	private List<Comment> comments;
 	
 	public List<Comment> getComments() {

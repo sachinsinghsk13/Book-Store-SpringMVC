@@ -10,9 +10,13 @@ import com.techjs.yourbookstore.dao.UserDao;
 
 public class Test {
 	public static void main(String[] args) {
-		ApplicationContext context = new AnnotationConfigApplicationContext(DaoConfig.class);
-		BookDao daoImpl = context.getBean(BookDao.class);
-		System.out.println(daoImpl.getBookCount());
+		Integer d = null;
+		if (d > 0) {
+			System.out.println("hello ");
+		}
+		else {
+			System.out.println("hii");
+		}
 		
 	}
 }

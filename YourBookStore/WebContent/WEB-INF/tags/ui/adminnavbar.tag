@@ -14,14 +14,14 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href='<spring:url value="/home"></spring:url>'>All IT Books
+			<li class="nav-item active"><a class="nav-link" href='<spring:url value="/allbooks"></spring:url>'>All IT Books
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href='<spring:url value="/admin/add-book"></spring:url>'>Categories</a>
+			<li class="nav-item"><a class="nav-link" href='<spring:url value="/allbooks"></spring:url>'>Categories</a>
 			</li>
 
 		</ul>
 		<div class="my-2 my-lg-0 ml-auto">
-			<form class="form-inline my-2 my-lg-0">
+			<form class="form-inline my-2 my-lg-0" action='<spring:url value="/search"></spring:url>' method="GET">
 			
 				<c:choose>
 					<c:when test="${sessionScope.SESSION_USER_ACCOUNT.userRole eq 'ADMIN'}">
@@ -37,7 +37,7 @@
 			
 				<input class="form-control-sm mr-sm-2 rounded-pill border-0 p-2"
 					type="search" placeholder="Book Title, Author.."
-					aria-label="Search">
+					name="query">
 			<!-- 	<button class="btn btn-light my-2 btn-sm my-sm-0" type="submit"><i class="fas fa-search"></i> Search</button> -->
 
 			</form>

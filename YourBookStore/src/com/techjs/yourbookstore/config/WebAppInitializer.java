@@ -24,7 +24,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 	
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
-		MultipartConfigElement element = new MultipartConfigElement("/home/sachinsingh/temp/",5242880,10485760, 0);
+		MultipartConfigElement element = new MultipartConfigElement("/home/sachinsingh/temp/",31457280,36700160, 0);
 		registration.setMultipartConfig(element);
 	}
 	
