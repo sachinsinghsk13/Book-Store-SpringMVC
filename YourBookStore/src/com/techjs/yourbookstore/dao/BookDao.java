@@ -12,7 +12,8 @@ public interface BookDao {
 	List<Category> getCategories();
 	List<Book> getBooks();
 	Long getBookCount();
-	Long getBookSearchCount(String query); 
+	Long getBookSearchCount(String query);
+	Long getBookCategoryCount(String category);
 	List<Book> getBooks(Integer max, Integer offset);
 	List<Book> searchBook(String query);
 	List<Book> searchBook(Integer max, Integer offset, String query);

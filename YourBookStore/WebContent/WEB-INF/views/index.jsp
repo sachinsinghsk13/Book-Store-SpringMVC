@@ -52,11 +52,16 @@
 								<c:choose>
 									<c:when test="${applySearchPagination}">
 										<ui:searchpagination currentPage="${pagination.current }"
-									totalPages="${pagination.totolPages}" baseurl="/search" query="${query}"/>
+											totalPages="${pagination.totolPages}" baseurl="/search"
+											query="${query}" />
+									</c:when>
+									<c:when test="${applyCategoryPagination}">
+										<ui:pagination currentPage="${pagination.current}"
+											totalPages="${pagination.totolPages}" baseurl="/category/${category}"/>
 									</c:when>
 									<c:otherwise>
-									 	<ui:pagination currentPage="${pagination.current }"
-									totalPages="${pagination.totolPages}" baseurl="/allbooks" />
+										<ui:pagination currentPage="${pagination.current }"
+											totalPages="${pagination.totolPages}" baseurl="/allbooks" />
 									</c:otherwise>
 								</c:choose>
 							</div>

@@ -158,7 +158,7 @@ public class BookController {
 		pagination.setCurrent(page);
 		List<Book> books = bookService.searchBook(query, pagination);
 		if (books.size() > 0)
-			mv.addObject("list_title", "Search Result for " + query);
+			mv.addObject("list_title", "Search Results for " + query);
 		else
 			mv.addObject("list_title", "No Results Found For " + query);
 		mv.addObject("books", books);
@@ -171,10 +171,23 @@ public class BookController {
 		return mv;
 	}
 
-	@GetMapping("/category/:cat")
-	public ModelAndView viewByCategory(@PathVariable("cat") String category, @RequestParam(value = "page", required = false) Integer page) {
+	@GetMapping("/category/{category}")
+	public ModelAndView viewByCategory(@PathVariable("category") String category, @RequestParam(value = "page", required = false) Integer page) throws PageNotFoundException {
 		ModelAndView mv = new ModelAndView();
-
+		Pagination pagination = new Pagination();
+		if (page == null) {
+			page = 1;
+		}
+		pagination.setCurrent(page);
+		List<Book> books = bookService.getBooksByCategory(pagination, category);
+		mv.addObject("list_title", category + " Books");
+		mv.addObject("books", books);
+		mv.addObject("pagination", pagination);
+		List<Category> categories = bookService.allCategories();
+		mv.addObject("categories", categories);
+		mv.addObject("applyCategoryPagination",true);
+		mv.addObject("category", category);
+		mv.setViewName("index");
 		return mv;
 	}
 }

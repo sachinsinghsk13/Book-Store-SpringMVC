@@ -78,6 +78,10 @@
 										<td>${book.language}</td>
 									</tr>
 									<tr>
+										<th scope="row">Category:</th>
+										<td><a href='<spring:url value="/category/${book.category.title}"></spring:url>' class="btn-link">${book.category.title}</a></td>
+									</tr>
+									<tr>
 										<th scope="row">File Size:</th>
 										<td><mtags:filesize size="${book.pdfFileSize}" /></td>
 									</tr>

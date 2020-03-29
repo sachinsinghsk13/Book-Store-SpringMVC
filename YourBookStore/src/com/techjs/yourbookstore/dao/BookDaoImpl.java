@@ -113,8 +113,8 @@ public class BookDaoImpl implements BookDao {
 	public List<Book> getBooksByCategory(Integer max, Integer offset, String category) {
 		return this.sessionFactory
 				.getCurrentSession()
-				.getNamedQuery("book_by_category")
-				.setParameter("cat", category)
+				.getNamedQuery("get_books_category")
+				.setParameter("category", category)
 				.setMaxResults(max)
 				.setFirstResult(offset)
 				.list();
@@ -125,8 +125,8 @@ public class BookDaoImpl implements BookDao {
 	public List<Book> getBooksByCategory(String category) {
 		return this.sessionFactory
 				.getCurrentSession()
-				.getNamedQuery("book_by_category")
-				.setParameter("cat", category)
+				.getNamedQuery("get_books_category")
+				.setParameter("category", category)
 				.list();
 	}
 
@@ -138,5 +138,16 @@ public class BookDaoImpl implements BookDao {
 				.getNamedQuery("book_search_count")
 				.setParameter("query","%"+query+"%" )
 				.getSingleResult();
+	}
+
+
+	@Override
+	public Long getBookCategoryCount(String category) {
+		return (Long) this.sessionFactory
+				.getCurrentSession()
+				.getNamedQuery("book_category_count")
+				.setParameter("category", category)
+				.getSingleResult();
+				
 	}
 }

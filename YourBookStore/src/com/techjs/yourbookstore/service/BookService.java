@@ -68,8 +68,17 @@ public class BookService {
 		return bookDao.getBooksByCategory(category);
 	}
 	
-	public List<Book> getBooksByCategory(Integer max, Integer offset, String category) {
-		return bookDao.getBooksByCategory(max, offset, category);
+	public List<Book> getBooksByCategory(Pagination pagination, String category) throws PageNotFoundException {
+		Long totalBooks = bookDao.getBookCategoryCount(category);
+		if (totalBooks == 0)
+			return new ArrayList<Book>();
+		Integer totalPages = (int) Math.ceil((double) totalBooks / pagination.getItemPerPage());
+		if (pagination.getCurrent() > totalPages || pagination.getCurrent() < 1)
+			throw new PageNotFoundException();
+		pagination.setTotal(totalBooks);
+		pagination.setTotolPages(totalPages);
+		Integer offset = ((pagination.getCurrent() - 1) * pagination.getItemPerPage());
+		return bookDao.getBooksByCategory(pagination.getItemPerPage(), offset, category);
 	}
 	
 	public Book getBookById(Long id) {

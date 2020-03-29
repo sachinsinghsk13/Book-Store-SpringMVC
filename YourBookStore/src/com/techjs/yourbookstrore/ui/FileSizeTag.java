@@ -22,10 +22,10 @@ public class FileSizeTag extends SimpleTagSupport {
 		double s = size/2014;
 		if (s > 1014) {
 			s = s / 1024; // convert to Mb
-			getJspContext().getOut().println(String.format("%.2fMB", s));
+			getJspContext().getOut().println(String.format("%.2f MB", s));
 		}
 		else {
-			getJspContext().getOut().println(String.format("%.2fKB", s));
+			getJspContext().getOut().println(String.format("%.2f KB", s));
 		}
 	}
 }
